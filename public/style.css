@@ -1,0 +1,136 @@
+@import url('https://fonts.cdnfonts.com/css/minecraft-4');
+
+:root {
+    --p: #7000ff; 
+    --bg: #050505; 
+    --c: #121212; 
+    --t: #ffffff;
+}
+
+* { 
+    box-sizing: border-box; 
+    font-family: 'Minecraft', sans-serif !important; 
+    -webkit-font-smoothing: none; 
+}
+
+body, html { 
+    margin: 0; 
+    padding: 0; 
+    background: var(--bg); 
+    color: var(--t); 
+    height: 100dvh; 
+    width: 100%; 
+    overflow: hidden;
+}
+
+.app-container {
+    display: flex; 
+    flex-direction: column; 
+    height: 100%;
+    background: radial-gradient(circle at top right, #1a0033, #050505);
+}
+
+#header {
+    height: 65px; 
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(10px); 
+    border-bottom: 1px solid #222;
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 0 20px;
+}
+
+#chat-box {
+    flex: 1; 
+    overflow-y: auto; 
+    padding: 20px;
+    display: flex; 
+    flex-direction: column; 
+    gap: 6px;
+    scrollbar-width: none;
+}
+
+.msg {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 8px 12px; 
+    border-radius: 8px; 
+    font-size: 16px;
+    border-left: 2px solid var(--p); 
+    line-height: 1.4;
+}
+
+#input-container {
+    height: 85px; 
+    background: rgba(18, 18, 18, 0.9);
+    padding: 15px; 
+    display: flex; 
+    gap: 10px; 
+    border-top: 1px solid #222;
+}
+
+#i {
+    flex: 1; 
+    background: #000; 
+    border: 1px solid #333;
+    color: #fff; 
+    padding: 0 20px; 
+    border-radius: 30px; 
+    outline: none;
+}
+
+#b {
+    background: var(--p); 
+    border: none; 
+    color: #fff;
+    padding: 0 25px; 
+    border-radius: 30px; 
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--p);
+}
+
+.c0{color:#000!important}.c1{color:#0000aa!important}.c2{color:#00aa00!important}.c3{color:#00aaaa!important}
+.c4{color:#aa0000!important}.c5{color:#aa00aa!important}.c6{color:#ffaa00!important}.c7{color:#aaaaaa!important}
+.c8{color:#555555!important}.c9{color:#5555ff!important}.ca{color:#55ff55!important}.cb{color:#55ffff!important}
+.cc{color:#ff5555!important}.cd{color:#ff55ff!important}.ce{color:#ffff55!important}.cf{color:#ffffff!important}
+
+.login-screen { 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100%; 
+}
+
+.card {
+    background: var(--c); 
+    padding: 40px; 
+    border-radius: 20px;
+    border: 1px solid var(--p); 
+    width: 90%; 
+    max-width: 380px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+}
+
+.card input {
+    width: 100%; 
+    background: #000; 
+    border: 1px solid #333;
+    color: #fff; 
+    padding: 15px; 
+    margin-bottom: 15px; 
+    border-radius: 10px;
+}
+
+.card button {
+    background: var(--p);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.card button:hover {
+    background: #8a2be2;
+}

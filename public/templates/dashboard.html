@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>ZEKI BOT - Dashboard</title>
+</head>
+<body>
+    <div class="app-container">
+        <div id="header">
+            <div style="display:flex; align-items:center">
+                <div style="width:10px;height:10px;background:#0f0;border-radius:50%;margin-right:10px"></div>
+                ZEKI SUPABASE
+            </div>
+            <a href="/stop" style="color:#ff4444; text-decoration:none">🔴 KAPAT</a>
+        </div>
+        
+        <div style="background:#1a1a1a; padding:10px; display:flex; gap:5px; overflow-x:auto;">
+            <button onclick="sendCommand('gel')" style="background:#333; color:white; border:none; padding:8px 15px; border-radius:5px;">🚶 Gel</button>
+            <button onclick="sendCommand('dur')" style="background:#333; color:white; border:none; padding:8px 15px; border-radius:5px;">✋ Dur</button>
+            <button onclick="sendCommand('zıpla')" style="background:#333; color:white; border:none; padding:8px 15px; border-radius:5px;">🦘 Zıpla</button>
+            <button onclick="sendCommand('otur')" style="background:#333; color:white; border:none; padding:8px 15px; border-radius:5px;">🪑 Otur</button>
+            <button onclick="sendCommand('envanter')" style="background:#333; color:white; border:none; padding:8px 15px; border-radius:5px;">📦 Envanter</button>
+            <button onclick="sendCommand('neredesin')" style="background:#333; color:white; border:none; padding:8px 15px; border-radius:5px;">📍 Konum</button>
+        </div>
+        
+        <div id="chat-box"></div>
+        
+        <div id="input-container">
+            <input id="i" placeholder="Komut yaz..." autocomplete="off">
+            <button id="b">GÖNDER</button>
+        </div>
+    </div>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const s = io();
+        const box = document.getElementById('chat-box');
+        const i = document.getElementById('i');
+        
+        function sendCommand(cmd) {
+            s.emit('web_msg', cmd);
+            i.value = '';
+        }
+        
+        document.getElementById('b').onclick = () => {
+            if(i.value) {
+                s.emit('web_msg', i.value);
+                i.value = '';
+            }
+        };
+        
+        i.onkeypress = (e) => {
+            if(e.key === 'Enter') document.getElementById('b').click();
+        };
+        
+        s.on('log', (d) => { 
+            const v = document.createElement('div'); 
+            v.className = 'msg'; 
+            v.innerHTML = d; 
+            box.appendChild(v); 
+            box.scrollTop = box.scrollHeight; 
+        });
+    </script>
+</body>
+</html>
